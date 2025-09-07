@@ -1,6 +1,8 @@
 # OSX
 #
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Xcode
 #
@@ -35,19 +37,14 @@ local.properties
 !debug.keystore
 .kotlin/
 
-# node.js
+# Node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
 
-# fastlane
+# Fastlane
 #
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/
-
 **/fastlane/report.xml
 **/fastlane/Preview.html
 **/fastlane/screenshots
@@ -60,10 +57,10 @@ yarn-error.log
 **/Pods/
 /vendor/bundle/
 
-# Temporary files created by Metro to check the health of the file watcher
+# Metro
 .metro-health-check*
 
-# testing
+# Testing
 /coverage
 
 # Yarn
@@ -73,3 +70,38 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Environment variables
+.env*
+!.env.example
+
+# Build outputs
+android/app/build/
+android/build/
+ios/build/
+
+# React Native
+.react/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# macOS
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Misc
+*.p12
+*.key
+*.mobileprovision

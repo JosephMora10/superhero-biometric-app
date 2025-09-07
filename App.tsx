@@ -1,38 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  useColorScheme,
+} from 'react-native';
 import {
   SafeAreaProvider,
-  useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import BottomTabNavigator from './src/routes/BottomTabNavigator';
+import { FavoritesProvider } from './src/context/FavoritesContext';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <FavoritesProvider>
+        <NavigationContainer>
+          <BottomTabNavigator />
+        </NavigationContainer>
+      </FavoritesProvider>
     </SafeAreaProvider>
   );
 }
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
+function AppContent(): React.JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? '#000' : '#fff',
+  };
 
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
+    <SafeAreaView style={[styles.container, backgroundStyle]}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
       />
-    </View>
+      <BottomTabNavigator />
+    </SafeAreaView>
   );
 }
 

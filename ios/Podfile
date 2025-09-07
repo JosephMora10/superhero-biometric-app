@@ -31,5 +31,18 @@ target 'StarTrackApp' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    
+    # Enable TurboModules
+    installer.pods_project.targets.each do |target|
+      if target.name == 'StarTrackApp'
+        target.build_configurations.each do |config|
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+            '$(inherited)',
+            'RCT_NEW_ARCH_ENABLED=1',
+            'FB_SONARKIT_ENABLED=1',
+          ]
+        end
+      end
+    end
   end
 end
